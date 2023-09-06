@@ -2,13 +2,16 @@
 import React, { useEffect } from 'react';
 import { Section } from './Section/Section';
 import { Filter } from './Filter/Filter';
-import { ContactForm } from './ContactForm/ContactForm';
+import { ContactForm } from './Forms/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import Notiflix from 'notiflix';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts, addContact, deleteContact } from '../redux/operations';
 import {updateFilter} from '../redux/contactsSlice'
 import { nanoid } from '@reduxjs/toolkit';
+import RegistrForm from './Forms/RegistrForm';
+import LoginForm from './Forms/LoginForm';
+import Navigation from './Navigation';
 
 export const App = () => {
   const contacts = useSelector(state => state.contacts.contacts.items);
@@ -45,6 +48,9 @@ export const App = () => {
   
   return (
     <>
+      <Navigation></Navigation>
+      <RegistrForm></RegistrForm>
+      <LoginForm></LoginForm>
       <Section title="Phonebook">
         <ContactForm onSubmit={addContactHandler} />
       </Section>
