@@ -11,6 +11,8 @@ import {updateFilter} from '../redux/contactsSlice'
 import { nanoid } from '@reduxjs/toolkit';
 import RegistrForm from './Forms/RegistrForm';
 import LoginForm from './Forms/LoginForm';
+import Header from './Header';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navigation from './Navigation';
 
 export const App = () => {
@@ -47,18 +49,25 @@ export const App = () => {
  }, [dispatch]);
   
   return (
-    <>
-      <Navigation></Navigation>
+    <Router>
+       <Navigation />
+        <Routes>
+          <Route path="/register" element={<RegistrForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/contacts" element={<ContactForm />} />
+          <Route path="/*" element={<Navigate to="/contacts" />} /> 
+        </Routes>
+      {/* <Header></Header>
       <RegistrForm></RegistrForm>
-      <LoginForm></LoginForm>
-      <Section title="Phonebook">
+      <LoginForm></LoginForm> */}
+      {/* <Section title="Phonebook">
         <ContactForm onSubmit={addContactHandler} />
       </Section>
 
       <Section title="Contacts">
         <Filter filter={filter} handleChange={filterChangeHandler} />
         <ContactList contacts={filteredContacts} onDelete={onDelete} />
-      </Section>
-    </>
+      </Section> */}
+    </Router>
   );
 };

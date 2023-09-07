@@ -1,15 +1,67 @@
 import React, { useState } from 'react'
-import { TextField, Grid, Button} from '@mui/material';
+import { TextField, Grid, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const LoginForm = ({ login }) => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+const LoginForm = () => {
+  const navigate = useNavigate();
 
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		login({ email, password })
-	}
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleLoginSuccess = async (token) => {
+    localStorage.setItem('authToken', token);
+    console.log('Автентифікація успішна');
+    navigate('/contacts');
+
+    
+    <Button
+      variant="contained"
+      style={{ backgroundColor: 'red', color: 'white' }}
+      onClick={() => navigate('/logout')}
+    >
+      Go Out
+    </Button>
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        'https://connections-api.herokuapp.com/users/login',
+        {
+          email: formData.email,
+          password: formData.password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        handleLoginSuccess(response.data.token);
+      }
+    } catch (error) {
+      if (error.response) {
+        console.error('Authentication failed:', error.response.data.error);
+      } else {
+        console.error('An error occurred during authentication:', error.message);
+      }
+    }
+  };
 	return (
 		<form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
@@ -20,6 +72,10 @@ const LoginForm = ({ login }) => {
             variant="outlined"
             type="email"
             required
+            name="email"
+            value={formData.email}
+          onChange={handleChange}
+            
           />
         </Grid>
         <Grid item xs={12}>
@@ -29,6 +85,9 @@ const LoginForm = ({ login }) => {
             variant="outlined"
             type="password"
             required
+            name="password"
+           value={formData.password}
+          onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>

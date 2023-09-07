@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Navigation() {
-  const [selectedTab, setSelectedTab] = useState(0);
-
-  const handleTabChange = (event, newValue) => {
-    setSelectedTab(newValue);
-  };
-
+const Navigation = () => {
   return (
-    <AppBar position="static">
-          <Tabs value={selectedTab} onChange={handleTabChange} indicatorColor="primary" textColor="primary">
-        <Tab label="Registration" sx={{ backgroundColor: 'lightblue' }} />
-        <Tab label="Log In" sx={{ backgroundColor: 'lightblue' }}/>
-        <Tab label="Contacts" sx={{ backgroundColor: 'lightblue' }} />
-      </Tabs>
-    </AppBar>
+    <nav>
+      <Link to="/register">Register</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/contacts">Contacts</Link>
+    </nav>
   );
-}
+};
 
 export default Navigation;
