@@ -24,14 +24,6 @@ const LoginForm = () => {
     console.log('Автентифікація успішна');
     navigate('/contacts');
 
-    
-    <Button
-      variant="contained"
-      style={{ backgroundColor: 'red', color: 'white' }}
-      onClick={() => navigate('/logout')}
-    >
-      Go Out
-    </Button>
   };
 
   const handleSubmit = async (e) => {

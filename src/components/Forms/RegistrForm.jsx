@@ -59,7 +59,9 @@ const RegistrForm = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField
-            label="Name"
+             label="Name"
+             name="name"
+             type="text"
             variant="outlined"
              required
              value={formData.name}
@@ -70,7 +72,8 @@ const RegistrForm = () => {
           <TextField
   label="Email"
   variant="outlined"
-  type="email"
+             type="email"
+             name="email"
   required
    value={formData.email}
             onChange={handleChange}
@@ -80,7 +83,8 @@ const RegistrForm = () => {
           <TextField
   label="Password"
   variant="outlined"
-  type="password"
+             type="password"
+             name="password"
   required
   value={formData.password}
             onChange={handleChange}
