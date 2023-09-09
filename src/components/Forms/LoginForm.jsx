@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const handleLoginSuccess = async (token) => {
     localStorage.setItem('authToken', token);
-    console.log('Автентифікація успішна');
+    console.log('Authentication is successful');
     navigate('/contacts');
 
   };

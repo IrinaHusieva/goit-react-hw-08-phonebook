@@ -7,15 +7,21 @@ import Header from './Header';
 import PrivateRoute from 'Routes/PrivateRoute';
 
 export const App = () => {
-  
-   return (
+  return (
     <Router>
       <Header />
       <Routes>
         <Route path="/register" element={<RegistrForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/contacts" element={<PrivateRoute redirectTo="/login"component={Contacts} />} />
-        <Route path="/*" element={<Navigate to="/contacts" />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login">
+              <Contacts />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
