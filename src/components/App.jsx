@@ -3,13 +3,13 @@ import RegistrForm from './Forms/RegistrForm';
 import LoginForm from './Forms/LoginForm';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Contacts } from 'pages/Contacts';
-import Header from './Header';
+import Navigation from './Navigation';
 import PrivateRoute from 'Routes/PrivateRoute';
 
 export const App = () => {
   return (
     <Router>
-      <Header />
+      <Navigation />
       <Routes>
         <Route path="/register" element={<RegistrForm />} />
         <Route path="/login" element={<LoginForm />} />

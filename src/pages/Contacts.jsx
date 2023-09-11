@@ -1,17 +1,20 @@
 import Notiflix from 'notiflix';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts, addContact, deleteContact } from '../redux/operations';
-import {updateFilter} from '../redux/contactsSlice'
+import { fetchContacts, addContact, deleteContact } from '../redux/contacts/operations';
+import {filterSlice} from '../redux/filterSlice'
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { Section } from '../components/Section/Section';
 import { Filter } from '../components/Filter/Filter';
 import { ContactForm } from '../components/Forms/ContactForm';
 import { ContactList } from '../components/ContactList/ContactList';
+import { setFilterValue } from '../redux/filterSlice';
+import UserMenu from 'components/UserMenu';
 
 export const Contacts = () => {
-  const contacts = useSelector(state => state.contacts.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
+  const contacts = useSelector(state => state.contacts.items);
+ const filter = useSelector(state => state.filter); 
+
   const dispatch = useDispatch();
 
  const filteredContacts = contacts.filter(contact =>
@@ -30,9 +33,10 @@ export const Contacts = () => {
     dispatch(addContact({ id: nanoid(), name, number }));
   };
 
-  const filterChangeHandler = e => {
-    dispatch(updateFilter(e.target.value));
-  };
+ const filterChangeHandler = e => {
+  dispatch(setFilterValue(e.target.value));
+};
+
 
   const onDelete = contactId => {
     dispatch(deleteContact(contactId));
@@ -44,6 +48,7 @@ export const Contacts = () => {
   
   return (
     <>
+      <UserMenu></UserMenu>
       <Section title="Phonebook">
         <ContactForm onSubmit={addContactHandler} />
       </Section>

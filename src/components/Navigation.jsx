@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-function Header() {
+function Navigation() {
   const location = useLocation();
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -53,4 +53,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navigation;

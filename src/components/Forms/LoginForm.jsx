@@ -22,6 +22,7 @@ const LoginForm = () => {
   const handleLoginSuccess = async (token) => {
     localStorage.setItem('authToken', token);
     console.log('Authentication is successful');
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     navigate('/contacts');
 
   };
