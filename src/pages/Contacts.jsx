@@ -8,7 +8,7 @@ import { Filter } from '../components/Filter/Filter';
 import { ContactForm } from '../components/Forms/ContactForm';
 import { ContactList } from '../components/ContactList/ContactList';
 import { setFilterValue } from '../redux/filterSlice';
-import UserMenu from 'components/UserMenu';
+import {UserMenu} from 'components/UserMenu';
 
 export const Contacts = () => {
   const contacts = useSelector(state => state.contacts.items);
