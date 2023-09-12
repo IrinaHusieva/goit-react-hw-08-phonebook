@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts, addContact, deleteContact } from '../redux/contacts/operations';
-import {filterSlice} from '../redux/filterSlice'
 import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { Section } from '../components/Section/Section';
