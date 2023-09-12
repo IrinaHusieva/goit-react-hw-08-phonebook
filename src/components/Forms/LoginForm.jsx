@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Grid, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styled from './LoginForm.module.css'
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -55,8 +56,9 @@ const LoginForm = () => {
       }
     }
   };
-	return (
-		<form onSubmit={handleSubmit}>
+  return (
+    <div className={styled.container}>
+		<form onSubmit={handleSubmit} className={styled.form}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField
@@ -85,6 +87,7 @@ const LoginForm = () => {
         </Grid>
         <Grid item xs={12}>
           <Button
+            className={styled.btn}
             type="submit"
             variant="contained"
             color="primary"
@@ -95,7 +98,8 @@ const LoginForm = () => {
         </Grid>
       </Grid>
     </form>
-	)
+      </div>
+      )
 }
 
 export default LoginForm

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Grid, Button } from '@mui/material';
 import axios from 'axios';
+import styled from './LoginForm.module.css'
 
 const RegistrForm = () => {
   const [formData, setFormData] = useState({
@@ -54,7 +55,8 @@ const RegistrForm = () => {
     }
   };
 
-	 return (
+  return (
+     <div className={styled.container}>
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
@@ -101,7 +103,8 @@ const RegistrForm = () => {
           </Button>
         </Grid>
       </Grid>
-    </form>
+      </form>
+      </div>
   );
 }
 
