@@ -27,7 +27,7 @@ export const App = () => {
     </>
   );
 };
-
+// приховування сторінки контактс без авторизації???
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import { Contacts } from 'pages/Contacts';
 // import Navigation from './Navigation';
