@@ -1,14 +1,15 @@
 
-import RegistrForm from './Forms/RegistrForm';
-import LoginForm from './Forms/LoginForm';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Contacts } from 'pages/Contacts';
 import Navigation from './Navigation';
-import  PrivateRoute  from '../Routes/PrivateRoute.js';
+import PrivateRoute from '../Routes/PrivateRoute.js';
+import RegistrForm from './Forms/RegistrForm';
+import LoginForm from './Forms/LoginForm';
 
 export const App = () => {
   return (
-    <Router>
+    <>
       <Navigation />
       <Routes>
         <Route path="/register" element={<RegistrForm />} />
@@ -23,9 +24,10 @@ export const App = () => {
         />
         <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
-    </Router>
+    </>
   );
 };
+
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import { Contacts } from 'pages/Contacts';
 // import Navigation from './Navigation';
